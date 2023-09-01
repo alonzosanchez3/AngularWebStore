@@ -41,7 +41,7 @@ export class HomeComponent {
   }
 
   getProducts() {
-    this.productSubscription = this.storeService.getAllProducts(this.count, this.sort).subscribe((_products) => {
+    this.productSubscription = this.storeService.getAllProducts(this.count, this.sort, this.category).subscribe((_products) => {
       this.products = _products
     })
   }
@@ -53,6 +53,7 @@ export class HomeComponent {
 
   onShowCategory(category: string): void {
     this.category = category
+    this.getProducts()
   }
 
   onAddToCart(product: Product) {
