@@ -66,7 +66,7 @@ export class CartComponent {
       items: this.cart.items
     }).subscribe(async (res: any) => {
       console.log(environment.apiKey)
-      let stripe = await loadStripe(environment.apiKey);
+      let stripe = await loadStripe("pk_test_51NlQzWG9MLiQo8RG4oST1Fywg4KXpa9ipTBWEX3FDrl2cqVvc2MBFVWaPZM9wJa9vKc5MPDBXVWLVrCeZfjjlhf400eqHsAz0x");
       stripe?.redirectToCheckout({
         sessionId: res.id
       })
