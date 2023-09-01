@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Cart, CartItem } from 'src/app/models/cart';
 import { CartService } from 'src/app/services/cart.service';
 import {loadStripe} from '@stripe/stripe-js'
-import { environment } from 'src/environment/environment';
+// import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-cart',
