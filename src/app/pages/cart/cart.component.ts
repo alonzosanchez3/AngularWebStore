@@ -50,6 +50,7 @@ export class CartComponent {
 
   onClearItem(item: CartItem) {
     this.cartService.removeFromCart(item);
+    console.log(environment.apiKey)
   }
 
   onAddItem(item: CartItem) {
