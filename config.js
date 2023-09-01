@@ -1,4 +1,5 @@
 const setEnv = () => {
+  console.log('run')
   const fs = require('fs');
   const writeFile = fs.writeFile;
   const targetPath = './src/environments/environment.ts';
