@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cart, CartItem } from 'src/app/models/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,31 +10,28 @@ import { Cart, CartItem } from 'src/app/models/cart';
 })
 export class CartComponent {
 
-  cart: Cart = {items: [{
-    product: 'https://via.placeholder.com/150',
-    name: 'snickers',
-    price: 150,
-    quantity: 1,
-    id: 1
-  },
-  {
-    product: 'https://via.placeholder.com/150',
-    name: 'jordans',
-    price: 250,
-    quantity: 2,
-    id: 2
-  }
-]};
+  cart: Cart = {items: []};
 
   dataSource: CartItem[] = []
   displayedColumns: string[] = [
     'product',
-    'name',
-    'price',
-    'quantity',
-    'total',
-    'action'
-  ]
+      'name',
+      'price',
+      'quantity',
+      'total',
+      'action'
+    ]
+
+  constructor(private cartService: CartService) {
+
+  }
+
+  ngOnInit() {
+    this.cartService.cart.subscribe((_cart: Cart) => {
+      this.cart = _cart
+      this.dataSource = this.cart.items
+    })
+  }
 
   getTotal(items: CartItem[]): number {
     return items.map((item) => {
@@ -42,8 +40,21 @@ export class CartComponent {
     .reduce((prev, current) => prev + current, 0)
   }
 
-  ngOnInit() {
-    this.dataSource = this.cart.items;
+  onClearAll() {
+    this.cartService.clearCart()
   }
+
+  onClearItem(item: CartItem) {
+    this.cartService.removeFromCart(item);
+  }
+
+  onAddItem(item: CartItem) {
+    this.cartService.addToCart(item)
+  }
+
+  onRemoveItem(item: CartItem) {
+    this.cartService.removeOneItemFromCart(item)
+  }
+
 
 }
