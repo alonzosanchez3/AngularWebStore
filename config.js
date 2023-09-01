@@ -18,4 +18,5 @@ const setEnv = () => {
       throw err;
     }
   });
+}
   setEnv();
