@@ -44,5 +44,3 @@ Thumbs.db
 .env
 
 ./server/.env
-
-/src/environment
