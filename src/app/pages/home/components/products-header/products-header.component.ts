@@ -17,10 +17,12 @@ export class ProductsHeaderComponent {
 
   onSortUpdated (newSort: string): void {
     this.sortSelectionChange.emit(newSort)
+    this.sort = newSort
   }
 
   onItemCountUpdated(itemCount: string): void {
     this.itemSelectionChange.emit(itemCount)
+    this.itemsShowCount = parseInt(itemCount)
   }
 
   onColumnUpdated(colsNum: number): void {
