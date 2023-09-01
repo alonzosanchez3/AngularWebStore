@@ -7,8 +7,9 @@ app.use(express.static('public'))
 app.use(bodyparser.urlencoded({extended: false}))
 app.use(bodyparser.json())
 app.use(cors({origin: true, credentials: true}))
+require('dotenv').config()
 
-const stripe = require('stripe')("sk_test_51NlQzWG9MLiQo8RGglThHY7BjO6WMgldXihVrpjVNsUJ2ydJrpLNgEjnn7rUR0V6F6duHl4K8NMxkRSiL30pr4TR00YW4r981G");
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 app.post('/checkout', async(req, res, next) => {
   console.log('accessed')
