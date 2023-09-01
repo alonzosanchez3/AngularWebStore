@@ -45,6 +45,7 @@ export class CartComponent {
 
   onClearAll() {
     this.cartService.clearCart()
+    console.log(environment.apiKey)
   }
 
   onClearItem(item: CartItem) {
