@@ -1,5 +1,4 @@
 export const environment = {
-  apiKey: 'undefined',
+  apiKey: '',
   production: true,
   };
-  
